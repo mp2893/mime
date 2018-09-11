@@ -1,2 +1,2 @@
-# MiME: Multi-level Medical Embedding of Electronic Health Records
+# MiME: Multi-level Medical Embedding of EHR
 Detail coming soon.

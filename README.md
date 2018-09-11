@@ -1,2 +1,2 @@
-# Project 001
-Something nice
+# MiME: Multi-level Medical Embedding of Electronic Health Records
+Detail coming soon.

@@ -22,8 +22,8 @@ def load_data(input_path, min_threshold=5, max_threshold=150, seed=1234, train_r
 
     seqs, labels = find_patients_with_many_associations(seqs, labels, association_threshold)
 
-    temp_seqs, test_seqs, temp_labels, test_labels = train_test_split(seqs, labels, test_size=0.2, random_state=seed)
-    train_seqs, valid_seqs, train_labels, valid_labels = train_test_split(temp_seqs, temp_labels, test_size=0.1, random_state=seed)
+    train_seqs, temp_seqs, train_labels, temp_labels = train_test_split(seqs, labels, test_size=0.8, random_state=seed)
+    valid_seqs, test_seqs, valid_labels, test_labels = train_test_split(temp_seqs, temp_labels, test_size=0.5, random_state=seed)
 
     train_size = int(len(train_seqs) * train_ratio)
     train_seqs = train_seqs[:train_size]
@@ -71,7 +71,7 @@ def find_patients_with_many_associations(seqs, labels, threshold):
                 code_count += 1
         num_visits = float(len(patient))
         if code_count / num_visits >= threshold:
-            new_seqs.append(patient)   
+            new_seqs.append(patient)
             new_labels.append(label)
     return new_seqs, new_labels
 

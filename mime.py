@@ -1,7 +1,11 @@
+from builtins import range
 import sys, pdb, os
 
 import numpy as np
-import cPickle as pickle
+try:
+    import pickle
+except ImportError:
+    import cPickle as pickle
 import tensorflow as tf
 #import sonnet as snt
 from sklearn.metrics import roc_auc_score
@@ -110,7 +114,7 @@ def run_test(seqs, label_seqs, sess, preds_T, input_PHs, label_PHs, mask_PHs, se
     all_preds = []
     all_labels = []
     batch_size = options['batch_size']
-    for idx in xrange(len(label_seqs) / batch_size):
+    for idx in range(int(len(label_seqs) / batch_size)):
         batch_x = seqs[idx*batch_size:(idx+1)*batch_size]
         batch_y = label_seqs[idx*batch_size:(idx+1)*batch_size]
         inputs, _, masks, seq_length = mime_util.st_preprocess_hf_aux(batch_x, options)
@@ -199,7 +203,7 @@ def train(
         best_test_auc = 0.0
         best_valid_aucpr = 0.0
         best_test_aucpr = 0.0
-        for train_iter in xrange(options['num_iter']+1):
+        for train_iter in range(options['num_iter']+1):
             batch_x, batch_y = mime_util.sample_batch(train_seqs, train_labels, options['batch_size'])
             inputs, labels, masks, seq_length = mime_util.st_preprocess_hf_aux(batch_x, options)
             _, preds, losses = sess.run([minimize_op, preds_T, loss_Ts],

@@ -1,4 +1,8 @@
-import cPickle as pickle
+try:
+    import pickle
+except ImportError:
+    import cPickle as pickle
+
 from sklearn.model_selection import train_test_split
 import numpy as np
 import sys, os, pdb

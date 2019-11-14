@@ -13,7 +13,7 @@ MiME implements an algorithm introduced in the following [paper](http://papers.n
   
 #### Notice
 
-Since MiME takes advantage of the graphical structure of visit records, you CANNOT use MiME when structure information is unknown (e.g. MIMIC-III does not tell you which diagnosis code led to ordering specific medications). In such cases, I recommend using [Graph Convolutional Transformer](https://arxiv.org/pdf/1906.04716.pdf) (GCT), which tries to learn the visit structure while performing predictions. (GCT code will be released soon)
+Since MiME takes advantage of the graphical structure of visit records, you CANNOT use MiME when structure information is unknown (e.g. MIMIC-III does not tell you which diagnosis code led to ordering specific medications). In such cases, I recommend using [Graph Convolutional Transformer](https://arxiv.org/pdf/1906.04716.pdf) (GCT), which tries to learn the visit structure while performing predictions. ([GCT code respository](https://github.com/Google-Health/records-research/tree/master/graph-convolutional-transformer))
 
 #### Running MiME
 
